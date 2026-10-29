@@ -45,4 +45,22 @@ class WizardTest {
 
         assertEquals(70, evilWizard.mana)
     }
+    @Test
+    fun train_mana_is_above_5_sp_is_increased_by_1() {
+        evilWizard.mana = 6
+        evilWizard.spellPower = 30
+        evilWizard.train()
+
+        assertEquals(1, evilWizard.mana)
+        assertEquals(31, evilWizard.spellPower)
+    }
+    @Test
+    fun train_mana_is_below_5_mana_does_not_change() {
+        evilWizard.mana = 4
+        evilWizard.spellPower = 30
+        evilWizard.train() // 30 + 40 = 70, so mana should be set to 70
+
+        assertEquals(4, evilWizard.mana)
+        assertEquals(30, evilWizard.spellPower)
+    }
 }
